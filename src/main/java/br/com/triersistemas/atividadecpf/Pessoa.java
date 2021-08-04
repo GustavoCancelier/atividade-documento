@@ -8,6 +8,8 @@ public abstract class Pessoa {
 	}
 
 	public abstract Boolean verificar();
+	public abstract String geraDoc();
+	public abstract String formataDoc();
 
 	public String getDocumento() {
 		return documento;

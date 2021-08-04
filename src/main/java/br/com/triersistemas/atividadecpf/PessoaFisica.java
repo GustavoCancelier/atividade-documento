@@ -1,6 +1,7 @@
 package br.com.triersistemas.atividadecpf;
 
 import java.math.BigDecimal;
+import java.util.SplittableRandom;
 
 public class PessoaFisica extends Pessoa {
 
@@ -44,6 +45,29 @@ public class PessoaFisica extends Pessoa {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public String geraDoc() {
+		Integer[] vetor = new Integer [11];
+		String[] vetorString = new String[11];
+		String cpf = "";
+		for (int i = 0; i < 11; i++) {
+			 vetor[i] = new SplittableRandom().nextInt(0, 10);
+			 vetorString[i] = String.valueOf(vetor[i]);
+		}
+		
+		for (int i = 0; i < vetorString.length; i++) {
+			cpf += vetorString[i];
+		}
+		return cpf;
+	}
+
+	@Override
+	public String formataDoc() {
+		String cpf = super.getDocumento();
+		cpf = cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-" + cpf.substring(9, 11);
+		return cpf;
 	}
 
 }
